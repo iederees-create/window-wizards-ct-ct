@@ -374,6 +374,45 @@
     </svg>
 </a>
 
+<!-- FLOATING AI ASSISTANT BUTTON -->
+<button id="chat-toggle-btn" class="chat-toggle-float" aria-label="Open Chat with Wizard AI">
+    <span class="notification-badge">1</span>
+    <svg viewBox="0 0 24 24" width="24" height="24">
+        <path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 9h12v2H6V9zm8 5H6v-2h8v2zm4-6H6V6h12v2z"/>
+    </svg>
+</button>
+
+<!-- AI CHAT DRAWER -->
+<div id="chat-drawer" class="chat-drawer">
+    <div class="chat-drawer-header">
+        <div class="chat-header-info">
+            <div class="chat-avatar">
+                <svg viewBox="0 0 24 24" width="20" height="20">
+                    <path d="M12 2L1 21h22L12 2zm0 4.19L19.53 19H4.47L12 6.19zM11 13h2v2h-2v-2zm0-4h2v3h-2V9z"/>
+                </svg>
+            </div>
+            <div>
+                <h4>Wizard AI Assistant</h4>
+                <div class="chat-status"><span class="status-dot"></span> Online &bull; Quote Estimator</div>
+            </div>
+        </div>
+        <button id="chat-close-btn" class="chat-close" aria-label="Close Chat">&times;</button>
+    </div>
+    <div id="chat-messages" class="chat-messages">
+        <div class="chat-bubble bot-message">
+            <p>Hello! I am <strong>Wizard AI</strong> 🧙‍♂️. I can explain our window cleaning, frame alignment, and weatherproofing services, calculate approximate rates for Blouberg, or book an inspection. How can I help you today?</p>
+        </div>
+    </div>
+    <div class="chat-drawer-footer">
+        <input type="text" id="chat-input" placeholder="Ask about price, cleaning, repairs..." aria-label="Chat Message Input">
+        <button id="chat-send-btn" class="chat-send" aria-label="Send Message">
+            <svg viewBox="0 0 24 24" width="18" height="18">
+                <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+            </svg>
+        </button>
+    </div>
+</div>
+
 <!-- INTERACTIVE SCRIPTS -->
 <script>
 document.addEventListener('DOMContentLoaded', () => {
@@ -541,6 +580,111 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 3000);
         }, 1500);
     });
+
+    // 6. SLIDING AI CHAT ASSISTANT
+    const chatToggle = document.getElementById('chat-toggle-btn');
+    const chatDrawer = document.getElementById('chat-drawer');
+    const chatClose = document.getElementById('chat-close-btn');
+    const chatInput = document.getElementById('chat-input');
+    const chatSend = document.getElementById('chat-send-btn');
+    const chatMessages = document.getElementById('chat-messages');
+
+    if (chatToggle && chatDrawer && chatClose && chatInput && chatSend && chatMessages) {
+        chatToggle.addEventListener('click', () => {
+            chatDrawer.classList.toggle('open');
+            const badge = chatToggle.querySelector('.notification-badge');
+            if (badge) badge.style.display = 'none';
+        });
+
+        chatClose.addEventListener('click', () => {
+            chatDrawer.classList.remove('open');
+        });
+
+        chatSend.addEventListener('click', handleSend);
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') handleSend();
+        });
+
+        function handleSend() {
+            const text = chatInput.value.trim();
+            if (!text) return;
+
+            appendMessage('user', text);
+            chatInput.value = '';
+            showTypingIndicator();
+
+            setTimeout(() => {
+                hideTypingIndicator();
+                const botResponse = generateAIResponse(text);
+                appendMessage('bot', botResponse);
+            }, 1200);
+        }
+
+        function appendMessage(sender, text) {
+            const bubble = document.createElement('div');
+            bubble.className = `chat-bubble ${sender === 'user' ? 'user-message' : 'bot-message'}`;
+            bubble.innerHTML = `<p>${text}</p>`;
+            chatMessages.appendChild(bubble);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        let typingIndicator = null;
+        function showTypingIndicator() {
+            if (typingIndicator) return;
+            typingIndicator = document.createElement('div');
+            typingIndicator.className = 'chat-bubble bot-message typing-indicator-bubble';
+            typingIndicator.innerHTML = `
+                <div class="typing-dots">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            `;
+            chatMessages.appendChild(typingIndicator);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function hideTypingIndicator() {
+            if (typingIndicator) {
+                typingIndicator.remove();
+                typingIndicator = null;
+            }
+        }
+
+        function generateAIResponse(message) {
+            const msg = message.toLowerCase();
+            if (msg.includes('quote') || msg.includes('price') || msg.includes('cost') || msg.includes('how much') || msg.includes('rate') || msg.includes('pricing')) {
+                return "Our window service rates in Blouberg start at <strong>R350 for apartments</strong> and <strong>R650 for houses</strong>. Seal/gasket replacements start around <strong>R450 per window</strong>. <br><br>Would you like me to estimate a custom quote for you? Just let me know the number of windows and if they are single or double-story!";
+            }
+            if (msg.includes('estimate') || msg.includes('window') || msg.includes('clean')) {
+                const match = msg.match(/\d+/);
+                if (match) {
+                    const count = parseInt(match[0]);
+                    const cleanEst = count * 45 + 300;
+                    return `Based on about <strong>${count} windows</strong>, a professional clean would be roughly <strong>R${cleanEst}</strong>, and checking/replacing seals would be about <strong>R${count * 150}</strong> if needed. <br><br>Would you like to book a free onsite inspection to confirm this estimate?`;
+                }
+            }
+            if (msg.includes('book') || msg.includes('schedule') || msg.includes('appoint') || msg.includes('consult') || msg.includes('inspect')) {
+                return "I can request a free onsite inspection for you! Could you please share your <strong>Name</strong> and <strong>Phone number / Email</strong>? I'll pass it to our Blouberg estimator immediately.";
+            }
+            if (msg.includes('contact') || msg.includes('phone') || msg.includes('call') || msg.includes('number') || msg.includes('email') || msg.includes('whatsapp')) {
+                return "You can call or WhatsApp us at <strong>+27 74 012 3456</strong>, or submit your details here and we will call you back! We are based right here in Blouberg.";
+            }
+            if (msg.includes('time') || msg.includes('long') || msg.includes('duration') || msg.includes('hours') || msg.includes('day')) {
+                return "Standard residential window cleans take <strong>2 to 4 hours</strong>. Seal replacements or frame alignments are usually completed in <strong>1 day</strong>. All work is fully guaranteed!";
+            }
+            if (msg.includes('repair') || msg.includes('seal') || msg.includes('leak') || msg.includes('draft') || msg.includes('gasket') || msg.includes('frame') || msg.includes('burglar') || msg.includes('bar')) {
+                return "Yes, we handle complete window repairs! This includes fixing misaligned frames (sliding or hinge), replacing old cracked rubber seals/gaskets, glazing cracked glass, and installing rust-free burglar bars. What issue are you experiencing?";
+            }
+            if (msg.includes('where') || msg.includes('location') || msg.includes('blouberg') || msg.includes('area') || msg.includes('service')) {
+                return "We are based in <strong>Blouberg Strand</strong>, Cape Town and cover the entire West Coast/Atlantic Seaboard (Melkbosstrand, Table View, Parklands, Milnerton, and surrounds).";
+            }
+            if (msg.match(/\d{9,11}/) || msg.includes('@')) {
+                return "Thank you! I've logged your contact details. A Window Wizards coordinator will message you on WhatsApp or call you shortly to arrange your free quote inspection.";
+            }
+            return "That sounds interesting! Window Wizards CT has a 4.8★ Google rating and provides streak-free cleaning and professional glass repairs. Would you like to schedule a free inspection, or should I calculate a custom price estimate?";
+        }
+    }
 });
 </script>
 
