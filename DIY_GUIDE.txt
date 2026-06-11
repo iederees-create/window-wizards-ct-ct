@@ -1,0 +1,80 @@
+========================================================================
+            DO-IT-YOURSELF (DIY) REBRANDING & HOSTING GUIDE
+========================================================================
+
+If you prefer to edit, rebrand, and host the website yourself without our help, this guide will walk you through the process.
+
+------------------------------------------------------------------------
+SECTION 1: CUSTOMIZING COLORS & DESIGN (style.css)
+------------------------------------------------------------------------
+All theme colors are controlled via CSS Variables at the top of the "style.css" file. To change the look and feel:
+
+1. Open "style.css" in any text editor (Notepad, VS Code, TextEdit, etc.).
+2. Locate the `:root` block at the top of the file (lines 6-18).
+3. Change the HEX color values to match your brand:
+   * `--primary` - The main accent color (default is neon cyan `#00f0ff`).
+   * `--primary-hover` - Button hover states (default is `#00d4e0`).
+   * `--secondary` - Sub-elements and highlights (default is orange `#fbbf24`).
+   * `--bg-dark` - The page background (default is deep slate `#030712`).
+   * `--text-primary` - Primary text color (default is `#f3f4f6`).
+
+4. Save the file. All buttons, icons, borders, glows, and custom gradients will automatically update to match your new colors!
+
+------------------------------------------------------------------------
+SECTION 2: CUSTOMIZING BUSINESS INFO & SERVICES (index.html)
+========================================================================
+All page content (text, prices, services, and script configurations) is located in the "index.html" file.
+
+1. Open "index.html" in a text editor.
+2. Edit Your Company Name & Info:
+   * Press Ctrl+F (or Cmd+F on Mac) and search for "Window Wizards CT". Replace it with your business name.
+   * Search for "Blouberg" or "Cape Town" and change them to your service location/cities.
+   * Search for "+27740123456" and replace it with your WhatsApp phone number. Ensure the number has the country code (no `+` or spaces, e.g. `27740123456` or `15551234567`) in the WhatsApp float link.
+
+3. Edit Your Service List:
+   * Go to the Services section (around lines 90-180) and modify the titles and descriptions to describe the work you perform.
+
+4. Edit the Interactive Lead Form:
+   * Change the options in the select lists or checkboxes to match the services you offer.
+
+5. Edit the AI Chat Assistant responses and quote calculation rules:
+   * Scroll to the bottom of the "index.html" file to find the `<script>` tag.
+   * Look for the `generateAIResponse(message)` function.
+   * Modify the return statements to match your prices and contact details. For example, search for "R350" or "R650" and update those numbers to your actual pricing.
+
+------------------------------------------------------------------------
+SECTION 3: FREE HOSTING ON GITHUB PAGES
+------------------------------------------------------------------------
+GitHub Pages provides 100% free hosting for static website templates. To deploy your website:
+
+1. CREATE A GITHUB ACCOUNT
+   * Go to https://github.com and sign up for a free account.
+
+2. CREATE A NEW REPOSITORY
+   * Log in to GitHub.
+   * Click the "+" icon in the top right and select "New repository".
+   * Repository Name: Enter your business name (e.g., "my-window-cleaning-site").
+   * Public/Private: Choose "Public" (required for free GitHub Pages).
+   * Click "Create repository".
+
+3. UPLOAD YOUR FILES
+   * On the quick setup page, click "uploading an existing file".
+   * Drag and drop both your rebranded files ("index.html", "style.css") plus your images/icons into the upload area.
+   * Scroll down and click the green "Commit changes" button.
+
+4. ACTIVATE GITHUB PAGES
+   * In your repository, click the "Settings" tab (gear icon at the top).
+   * In the left menu, select "Pages".
+   * Under "Build and deployment" -> "Branch", change the dropdown from "None" to "main" (or your active branch).
+   * Click "Save".
+
+5. VISIT YOUR LIVE WEBSITE
+   * Wait 1-2 minutes for the setup to complete.
+   * Refresh the settings page. You will see a banner: "Your site is live at: https://<username>.github.io/<repository>/"
+   * Click it to see your website live!
+
+------------------------------------------------------------------------
+NEED HELP?
+------------------------------------------------------------------------
+If you decide you prefer professional help setting up, editing, or hosting your website, just message me on Etsy! The customization service is fully included in your purchase price.
+------------------------------------------------------------------------

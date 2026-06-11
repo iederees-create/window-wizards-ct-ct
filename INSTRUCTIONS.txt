@@ -1,0 +1,43 @@
+========================================================================
+             TEMPLATE SETUP & REBRANDING INSTRUCTIONS
+========================================================================
+
+Thank you for your purchase! Follow the instructions below to preview your website template locally or request your complimentary professional rebranding and setup service.
+
+------------------------------------------------------------------------
+STEP 1: PREVIEW THE WEBSITE LOCALLY
+------------------------------------------------------------------------
+You can test the website immediately on your computer:
+1. Extract all downloaded files (index.html, style.css) into the same folder.
+2. Double-click "index.html" to open it in any modern web browser (Chrome, Safari, Edge, Firefox).
+3. Try interacting with the Before/After Window cleaning slider, clicking the service cards to see the 3D-tilt, submitting a test quote in the lead-gen form, and opening the floating AI Chat Assistant to get pricing.
+
+------------------------------------------------------------------------
+STEP 2: CLAIM YOUR COMPLIMENTARY REBRANDING & SETUP SERVICE
+------------------------------------------------------------------------
+As part of your purchase, I provide a complete, done-for-you rebranding and migration service to transform this template into your official company website.
+
+To initiate the rebranding process:
+1. Contact me directly via Etsy Messages.
+2. Send me your business information, including:
+   - Your company name and logo (if you have one).
+   - Your preferred colors (or I can match them to your logo).
+   - Your contact details (phone, email, physical address/areas served).
+   - Your specific services, custom rates, and typical pricing.
+   - Your WhatsApp phone number (to link the floating chat buttons).
+   - Any specific text changes or custom answers for the AI Assistant.
+
+3. We will collaborate to customize the website's HTML, CSS, and interactive scripts.
+4. I will modify the source code, apply your brand design, test the features, and deliver your ready-to-publish files.
+5. If needed, I will also assist you in hosting the site live online (e.g. setting up a custom domain or hosting it for free on GitHub Pages/Netlify).
+
+------------------------------------------------------------------------
+STEP 3: DO-IT-YOURSELF (DIY) SETUP
+------------------------------------------------------------------------
+If you prefer to edit and host the website yourself without my help, please open "DIY_GUIDE.txt" (included in this download) for a step-by-step guide on how to change colors, customize text, configure the contact links, and deploy it live to the web.
+
+------------------------------------------------------------------------
+NEED HELP OR HAVE QUESTIONS?
+------------------------------------------------------------------------
+If you run into any issues or have questions about how to use the website, please send me a message on Etsy. I respond within 24 hours and am committed to helping you launch a website you love!
+------------------------------------------------------------------------
